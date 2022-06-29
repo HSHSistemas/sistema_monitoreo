@@ -240,6 +240,10 @@ function limpiar_modal()
     document.getElementById('txtcantidad_disponible').value = "";
     document.getElementById('txtfecha_caducidad').value = "";
     document.getElementById('txt_folio_venta').value = "";
+    document.getElementById('txtcantidad_salida_2').value = "";
+    
+    
+
 }
 
 function Buscar_Lotes(){
