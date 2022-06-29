@@ -7,8 +7,8 @@
 		public $conexion;
 		public function __construct(){
 		    $this->servidor = "localhost";
-			$this->usuario = "root";
-			$this->contrasena = "";
+			$this->usuario = "sistemas";
+			$this->contrasena = "Admin1234";
 			$this->basedatos = "sistema_inocuidad";
         }
         

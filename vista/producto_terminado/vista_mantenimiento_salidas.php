@@ -19,7 +19,6 @@
                             <th style="text-align: center;">Fecha Salida</th>
                             <th style="text-align: center;">Cantidad</th>
                             <th style="text-align: center;">Folio venta</th>
-                            <th>Acci&oacute;n</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +32,6 @@
                             <th style="text-align: center;">Fecha Salida</th>
                             <th style="text-align: center;">Cantidad</th>
                             <th style="text-align: center;">Folio venta</th>
-                            <th>Acci&oacute;n</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -134,7 +132,7 @@
           </div>
 
           <div class="col-lg-12"><br>
-            <div class="alert alert-danger alert-bordered" style="display: none" id="div_error"></div>
+            <div class="alert alert-danger alert-bordered" style="display: none" id="div_error_2"></div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -20,8 +20,7 @@ function listar_prod_salidas() {
             {"data": "fecha_caducidad"},
             {"data": "fecha_salida"},
             { "data": "cantidad"},
-            { "data": "folio_venta" },
-            { "defaultContent": "<button class='editar btn btn-primary' ><i class='fa fa-edit'></i></button>" }
+            { "data": "folio_venta" }
 
 
         ],
@@ -47,10 +46,9 @@ function listar_prod_salidas() {
 }
 
 function AbrirModal() {
-    //$("#Modal_Registro_P").modal({ backdrop: 'static', keyboard: false })
-    //$("#Modal_Registro_P").modal("show");
     $("#Modal_Registro_Salida").modal({ backdrop: 'static', keyboard: false })
     $("#Modal_Registro_Salida").modal("show");
+    document.getElementById('div_error_2').style.display = "none";
     limpiar_modal();
     listar_producto_combo();
 }
@@ -58,10 +56,10 @@ function AbrirModal() {
 function AbrirModal_US() {
     $("#Modal_Registro_P").modal({ backdrop: 'static', keyboard: false })
     $("#Modal_Registro_P").modal("show");
+    document.getElementById('div_error').style.display = "none";
     limpiar_modal();
     listar_producto_combo();
 }
-
 
 function listar_producto_combo() {
   $.ajax({
@@ -245,12 +243,34 @@ function limpiar_modal()
 }
 
 function Buscar_Lotes(){
+$("#container").html("");
 var cantidad_salida = document.getElementById('txtcantidad_salida_2').value;
 var producto = document.getElementById('cmb_producto_2').value;
 cantidad_salida= parseInt(cantidad_salida)
-llenar_checkbox_lotes(producto, cantidad_salida);
 
-
+$.ajax({
+    url: '../controlador/producto_terminado/controlador_verificar_cantidad_producto.php',
+    type: 'POST',
+    data: {
+        producto: producto
+    }
+}).done(function (resp) {
+    var data = JSON.parse(resp)
+    if (data.length > 0) {
+        var stock;
+        console.log(data);
+        stock=parseFloat(data[0][0]);
+        console.log(stock);
+       if( stock>= cantidad_salida )
+       {
+        llenar_checkbox_lotes(producto, cantidad_salida);
+       }
+       else
+       {
+        return Swal.fire("Mensaje de advertencia", "No hay la cantidad de producto en stock", "warning");
+       }
+    }
+})
 
 }
 
@@ -345,6 +365,7 @@ function llenar_checkbox_lotes(producto,cantidad_salida)
 }
 
 function Registar_Salida_2() {
+
     var producto = document.getElementById('cmb_producto_2').value;
     var cantidad_salida = document.getElementById('txtcantidad_salida_2').value;
     var folio_venta = document.getElementById('txt_folio_venta_2').value;
@@ -356,20 +377,9 @@ function Registar_Salida_2() {
         lotes.push(($(this).val()));
       });
 
-      console.log(producto);
-    
-      console.log(cantidad_salida);
-      console.log(folio_venta);
-      console.log(lote);
-      console.log(lotes.length);
-
-
-
-    
-
-    
+      
     if (producto.length === 0 || producto === null || lotes.length === 0 || lotes === null || cantidad_salida.length === 0 || cantidad_salida === null || folio_venta.length === 0 || folio_venta === null) {
-        mensaje_error(producto, lote, cantidad_salida,folio_venta,'div_error');
+        mensaje_error2(producto, lote, cantidad_salida,folio_venta,'div_error_2');
         return Swal.fire("Mensaje de advetencia", "Llene el/los campo/s vacio/s", "warning");
     }
     else {
@@ -569,5 +579,24 @@ function Registar_Salida_2() {
 
     }
 
+
+}
+
+function mensaje_error2(producto, lote, cantidad_salida,folio_venta, id) {
+    var cadena = "";
+    if (producto.length === 0 || producto === null) {
+        cadena = "El campo producto no debe estar vacio.<br>";
+    }
+
+    if (cantidad_salida.length == 0) {
+        cadena += "El campo cantidad no debe estar vacio.<br>";
+    }
+
+    if (folio_venta.length == 0) {
+        cadena += "El campo folio venta no debe estar vacio.<br>";
+    }
+
+    document.getElementById(id).style.display = "block";
+    document.getElementById(id).innerHTML = "<strong>Revise los siguientes campos: </strong><br>" + cadena;
 
 }

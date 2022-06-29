@@ -46,6 +46,7 @@ function listar_prod_entradas() {
 function AbrirModal() {
     $("#Modal_Registro_P").modal({ backdrop: 'static', keyboard: false })
     $("#Modal_Registro_P").modal("show");
+    document.getElementById('div_error').style.display = "none";
     limpiar_modal();
     listar_producto_combo();
 

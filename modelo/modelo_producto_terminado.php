@@ -193,6 +193,20 @@
                 $this->conexion->cerrar();
             }
         }
+
+        function Traer_Stock_Producto($id)
+        {
+        $sql = "call SP_TRAER_STOCK_PRODUCTO('$id')";
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_vu = mysqli_fetch_array($consulta))
+            {
+
+                $arreglo[] = $consulta_vu;
+            }
+            return $arreglo;
+            $this->conexion->cerrar();
+        }
+        }
         
 }
 
