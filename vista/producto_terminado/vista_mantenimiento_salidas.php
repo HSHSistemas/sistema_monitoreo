@@ -77,7 +77,7 @@
 
           <div class="col-lg-12">
             <label for="">Folio Venta</label>
-            <input type="text" autocomplete="off" class="form-control" id="txt_folio_venta" onkeypress="return soloNumeros(event)">
+            <input type="text" readonly autocomplete="off" class="form-control" id="txt_folio_venta">
           </div>
 
           <div class="col-lg-12"><br>

@@ -147,7 +147,7 @@ function Registar_Salida() {
     var lote = document.getElementById('cmb_lote').value;
     var cantidad_salida = document.getElementById('txtcantidad_salida').value;
     var cantidad_disponible= document.getElementById('txtcantidad_disponible').value;;
-    var folio_venta = document.getElementById('txt_folio_venta').value;
+    var folio_venta = 978020137962;
 
     
     if (producto.length === 0 || producto === null || lote.length === 0 || lote === null || cantidad_salida.length === 0 || cantidad_salida === null || folio_venta.length === 0 || folio_venta === null) {
@@ -241,7 +241,7 @@ function limpiar_modal()
     document.getElementById('txtfecha_caducidad').value = "";
     document.getElementById('txt_folio_venta').value = "";
     document.getElementById('txtcantidad_salida_2').value = "";
-    
+
     
 
 }
