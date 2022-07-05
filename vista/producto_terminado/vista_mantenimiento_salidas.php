@@ -113,9 +113,7 @@
           
           <div class="col-lg-6">
             <label for="">Cantidad de salida</label>
-            <input type="text" autocomplete="off" class="form-control" id="txtcantidad_salida_2" onkeypress="return soloNumeros(event)">
-            <br>
-            <button type="button" class="btn btn-success" onclick="Buscar_Lotes()">Buscar lotes</button>
+            <input type="text" autocomplete="off" class="form-control" id="txtcantidad_salida_2" onblur="Buscar_Lotes()" onkeypress="return soloNumeros(event)">
             <br>
           </div>
 
