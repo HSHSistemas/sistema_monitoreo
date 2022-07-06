@@ -26,9 +26,9 @@
             }
         }
 
-        function Registrar_Persona($nombre,$appa,$apma,$documento,$tdocumento,$sexo,$telefono)
+        function Registrar_Persona($nombre,$appa,$apma,$sexo)
         {
-            $sql = "call SP_REGISTRAR_PERSONA('$nombre','$appa','$apma','$documento','$tdocumento','$sexo','$telefono')";
+            $sql = "call SP_REGISTRAR_PERSONA('$nombre','$appa','$apma','$sexo')";
             if ($consulta = $this->conexion->conexion->query($sql))
             {
                 if ($row = mysqli_fetch_array($consulta)){

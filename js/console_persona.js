@@ -73,22 +73,12 @@ function Registar_Persona() {
     var nombre = document.getElementById('txtnombre').value;
     var apellidopat = document.getElementById('txtapepat').value;
     var apellidomat = document.getElementById('txtapemat').value;
-    var documento = document.getElementById('txtnro').value;
-    var tdocument = document.getElementById('cmb_tdocumento').value;
     var sexo = document.getElementById('cmb_sexo').value;
-    var telefono = document.getElementById('txttelefono').value;
-
-    console.log(nombre);
-    console.log(apellidopat);
-    console.log(apellidomat);
-    console.log(documento);
-    console.log(tdocument);
-    console.log(sexo);
-    console.log(telefono);
 
 
-    if (nombre.length === 0 || nombre === null || apellidopat.length === 0 || apellidopat === null || apellidomat.length === 0 || apellidomat === null || documento.length === 0 || documento === null || tdocument.length === 0 || tdocument === null || telefono=== null || telefono.length === 0) {
-        mensaje_error(nombre, apellidopat, apellidomat, documento, tdocument, sexo, telefono,'div_error');
+
+    if (nombre.length === 0 || nombre === null || apellidopat.length === 0 || apellidopat === null || apellidomat.length === 0 || apellidomat === null) {
+        mensaje_error(nombre, apellidopat, apellidomat, sexo,'div_error');
         return Swal.fire("Mensaje de advetencia", "Llene el campo vacio", "warnig");
     }
     else {
@@ -100,10 +90,7 @@ function Registar_Persona() {
                 nombre: nombre,
                 apellidopat: apellidopat,
                 apellidomat: apellidomat,
-                documento: documento,
-                tdocument: tdocument,
-                sexo: sexo,
-                telefono: telefono
+                sexo: sexo
             }
         }).done(function (resp) {
             if (isNaN(resp)) {
@@ -271,6 +258,4 @@ function limpiar_modal()
     document.getElementById('txtnombre').value = "";
     document.getElementById('txtapepat').value = "";
     document.getElementById('txtapemat').value = "";
-    document.getElementById('txtnro').value = "";
-    document.getElementById('txttelefono').value = "";
 }

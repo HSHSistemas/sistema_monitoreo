@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-06-2022 a las 22:15:32
+-- Tiempo de generación: 06-07-2022 a las 16:03:02
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.1
 
@@ -245,6 +245,13 @@ DROP PROCEDURE IF EXISTS `SP_REGISTRAR_MOLIENDA`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REGISTRAR_MOLIENDA` (IN `IDMATERIA` INT, IN `CORTE` VARCHAR(45), IN `KG` DOUBLE, IN `IDMOLINO` INT)  BEGIN
 INSERT INTO molienda(molienda_corte,molienda_fecha_entrada,molienda_hora_entrada,molienda_kg_ingresados,id_materia,id_molino)
 values (CORTE,curdate(),curtime(),KG,IDMATERIA,IDMOLINO);
+SELECT 1;
+END$$
+
+DROP PROCEDURE IF EXISTS `SP_REGISTRAR_PERSONA`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_REGISTRAR_PERSONA` (IN `NOMBRE` VARCHAR(100), IN `APEPAT` VARCHAR(50), IN `APEMAT` VARCHAR(50), IN `SEXO` VARCHAR(10))  BEGIN
+INSERT INTO persona (persona_nombre, persona_apepat, persona_apemat,persona_sexo,persona_fregistro,persona_estatus)
+VALUES (NOMBRE, APEPAT, APEMAT,SEXO,curdate(),'ACTIVO');
 SELECT 1;
 END$$
 
@@ -661,14 +668,15 @@ CREATE TABLE IF NOT EXISTS `persona` (
   `persona_fregistro` date DEFAULT NULL,
   `persona_estatus` enum('ACTIVO','INACTIVO') COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_persona`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
 INSERT INTO `persona` (`id_persona`, `persona_nombre`, `persona_apepat`, `persona_apemat`, `persona_sexo`, `persona_fregistro`, `persona_estatus`) VALUES
-(11, 'Oscar Alexis', 'Rosales', 'Rodrigo', 'MASCULINO', '2022-04-26', 'ACTIVO');
+(11, 'Oscar Alexis', 'Rosales', 'Rodrigo', 'MASCULINO', '2022-04-26', 'ACTIVO'),
+(12, 'NATALIA', 'GOMEZ', 'JUAREZ', 'FEMENINO', '2022-07-06', 'ACTIVO');
 
 -- --------------------------------------------------------
 
@@ -995,7 +1003,7 @@ CREATE TABLE IF NOT EXISTS `prod_ter_salidas` (
   `fecha_salida` date DEFAULT NULL,
   `folio_venta` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_prod_ter_salidas`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Disparadores `prod_ter_salidas`

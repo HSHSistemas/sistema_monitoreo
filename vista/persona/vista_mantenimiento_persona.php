@@ -59,28 +59,13 @@
             <label for="">Apellido Materno</label>
             <input type="text" class="form-control" id="txtapemat" onkeypress="return sololetras(event)">
           </div>
+    
           <div class="col-lg-12">
-            <label for="">Nro Documento</label>
-            <input type="text" class="form-control" id="txtnro" onkeypress="return soloNumeros(event)">
-          </div>
-          <div class="col-lg-12">
-            <label for="">Tipo Documento</label>
-            <select class="js-example-basic-single" id="cmb_tdocumento" style="width:100%">
-              <option value="DNI">DNI</option>
-              <option value="PASAPORTE">PASAPORTE</option>
-              <option value="RUC">RUC</option>
-            </select>
-          </div>
-          <div class="col-lg-12">
-            <label for="">Tipo Documento</label>
+            <label for="">Sexo</label>
             <select class="js-example-basic-single" id="cmb_sexo" style="width:100%">
               <option value="MASCULINO">MASCULINO</option>
               <option value="FEMENINO">FEMENINO</option>
             </select>
-          </div>
-          <div class="col-lg-12">
-            <label for="">Telefono</label>
-            <input type="text" class="form-control" id="txttelefono" onkeypress="return soloNumeros(event)">
           </div>
 
           <div class="col-lg-12"><br>
