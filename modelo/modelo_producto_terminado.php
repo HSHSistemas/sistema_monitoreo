@@ -196,18 +196,65 @@
 
         function Traer_Stock_Producto($id)
         {
-        $sql = "call SP_TRAER_STOCK_PRODUCTO('$id')";
-        if ($consulta = $this->conexion->conexion->query($sql)) {
-            while ($consulta_vu = mysqli_fetch_array($consulta))
-            {
+            $sql = "call SP_TRAER_STOCK_PRODUCTO('$id')";
 
-                $arreglo[] = $consulta_vu;
+            if ($consulta = $this->conexion->conexion->query($sql))
+            {
+                while ($consulta_vu = mysqli_fetch_array($consulta))
+                    {
+
+                        $arreglo[] = $consulta_vu;
+                    }  
+                return $arreglo;
+                $this->conexion->cerrar();
             }
-            return $arreglo;
-            $this->conexion->cerrar();
         }
+
+        function Traer_Nombre_Producto($lote)
+        {
+            $sql = "call SP_TRAER_NOMBRE_PRODUCTO('$lote')";
+
+            if ($consulta = $this->conexion->conexion->query($sql))
+            {
+                while ($consulta_vu = mysqli_fetch_array($consulta))
+                    {
+
+                        $arreglo[] = $consulta_vu;
+                    }  
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
+        function Listar_Devolucion_Producto()
+        {
+            $sql = "call SP_LISTAR_DEVOLUCIONES_PRODUCTO()";
+            $arreglo = array();
+            if ($consulta = $this->conexion->conexion->query($sql))
+            {
+                while($consulta_vu = mysqli_fetch_assoc($consulta))
+                {
+                   
+                    $arreglo["data"][]= $consulta_vu;
+                }
+                return $arreglo;
+                $this->conexion->cerrar();
+            }
+        }
+
+        function Registrar_Devolucion_Producto_Terminado($lote,$cantidad,$motivo)
+        {
+            $sql = "call SP_REGISTRAR_DEVOLUCION_PRODUCTO_TERMINADO('$lote','$cantidad','$motivo')";
+            if ($consulta = $this->conexion->conexion->query($sql))
+            {
+                if ($row = mysqli_fetch_array($consulta)){
+                    $respuesta = trim($row[0]);
+                    return  $respuesta;
+                }
+                $this->conexion->cerrar();
+            }
         }
         
-}
+    }
 
 ?>
