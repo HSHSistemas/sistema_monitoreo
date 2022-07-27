@@ -252,6 +252,11 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                             <li>
                                 <a href="javascript:cargar_contenido('contenido_principal','producto_terminado/vista_mantenimiento_salidas.php');">Salidas</a>
                             </li>
+
+                            <li>
+                                <a href="javascript:cargar_contenido('contenido_principal','producto_terminado/vista_mantenimiento_devoluciones.php');">Devoluciones</a>
+                            </li>
+                            
                             <li>
                                 <a href="javascript:cargar_contenido('contenido_principal','producto_terminado/vista_mantenimiento_inventario.php');">Inventario</a>
                             </li>
